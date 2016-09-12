@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RaspiCam Web</title>
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <div class="raspicam-container">
+      <h1>RaspiCam Web</h1>
+      <form onSubmit="event.preventDefault();">
+        <input class="todo" value="60">
+        <input type="submit" class="submit" value="Start">
+        <input type="submit" class="submit" value="Stop">
+      </form>
+      <latest-image></latest-image>
+      </p>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.1/riot+compiler.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/latest-image.js"></script>
+
+    <script>
+      imagedata = {
+        src: '/img/giraffe.jpg',
+        message: 'Not started'
+      };
+      riot.mount('latest-image', {
+        data: imagedata
+      })
+    </script>
+  </body>
+</html>
