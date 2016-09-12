@@ -25,7 +25,7 @@ data = {
 function start(interval) {
   data.message = "Started";
   data.interval = interval;
-  data.startedAt = new Date().toLocaleString();
+  data.startedAt = new Date().toUTCString();
   data.lastImageTakenAt = null;
   data.lastImageUrl = null;
 
@@ -38,7 +38,7 @@ function start(interval) {
 
   camera.on("read", function(err, timestamp, filename) {
     console.log("Camera read");
-    d = new Date(timestamp).toLocaleString();
+    d = new Date(timestamp).toUTCString();
     f = "/img/" + filename;
     updateLastImage(d, f);
     io.emit('image:updated', JSON.stringify(data));
